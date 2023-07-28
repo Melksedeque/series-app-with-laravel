@@ -1,13 +1,14 @@
 <x-layout title="Series">
-    <section class="series">
-        <div class="container">
+    <div class="container">
+        <a href="/series/create">+ Adicionar</a>
+        <section class="series">
             <ul>
                 @forelse ($series as $serie)
-                    <li>{{$serie}}</li>
+                    <li>{{ $serie->title }}</li>
                 @empty
                     <p>Não foi possível encontrar nenhuma série</p>
                 @endforelse
             </ul>
-        </div>
-    </section>
+        </section>
+    </div>
 </x-layout>
