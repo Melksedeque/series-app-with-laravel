@@ -23,3 +23,5 @@ Route::get('/hello-world', function () {
 });
 
 Route::get('/series', [SeriesController::class, 'index']);
+Route::get('/series/create', [SeriesController::class, 'create']);
+Route::post('/series/store', [SeriesController::class, 'store']);
