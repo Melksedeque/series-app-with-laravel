@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Series;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
@@ -12,13 +13,8 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = [
-            'Ahsoka',
-            'Castlevania Nocturne',
-            'Cobra Kai',
-            'Manifest',
-            'One Piece',
-        ];
+        $series = DB::select('SELECT * FROM series WHERE status = ?', [1]);
+        // dd($series);
 
         return view('series.index', compact('series'));
     }
@@ -28,7 +24,7 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('series.create');
     }
 
     /**
@@ -36,7 +32,20 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $seasons = $request->input('seasons');
+        $premiere_date = $request->input('premiere_date');
+        $synopsis = $request->input('synopsis');
+        $image = $request->input('image');
+
+        if(DB::insert(
+            'INSERT INTO series (title, seasons, premiere_date, synopsis, image)
+            VALUES (?, ?, ?, ?, ?)',
+            [$title, $seasons, $premiere_date, $synopsis, $image])) {
+            return redirect('/series');
+        } else {
+            return "Deu ruim!";
+        }
     }
 
     /**
