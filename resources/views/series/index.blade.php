@@ -11,12 +11,7 @@
                 @forelse ($series as $serie)
                     <li>
                         {{ $serie->title }}
-                        {{-- <a href="{{ route('series.update') }}">E</a> --}}
-                        <form action="{{ route('series.edit', $serie->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <button>E</button>
-                        </form>
+                        <a href="{{ route('series.edit', $serie->id) }}">E</a>
                         <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
