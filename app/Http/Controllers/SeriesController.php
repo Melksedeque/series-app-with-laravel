@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Series;
+use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +13,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = DB::select('SELECT * FROM series WHERE status = ?', [1]);
+        $series = Serie::all()->sortBy('title');
         // dd($series);
 
         return view('series.index', compact('series'));
@@ -32,26 +32,15 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        $title = $request->input('title');
-        $seasons = $request->input('seasons');
-        $premiere_date = $request->input('premiere_date');
-        $synopsis = $request->input('synopsis');
-        $image = $request->input('image');
+        Serie::create($request->all());
 
-        if(DB::insert(
-            'INSERT INTO series (title, seasons, premiere_date, synopsis, image)
-            VALUES (?, ?, ?, ?, ?)',
-            [$title, $seasons, $premiere_date, $synopsis, $image])) {
-            return redirect('/series');
-        } else {
-            return "Deu ruim!";
-        }
+        return to_route('series.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Series $series)
+    public function show(Serie $series)
     {
         //
     }
@@ -59,7 +48,7 @@ class SeriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Series $series)
+    public function edit(Serie $serie)
     {
         //
     }
@@ -67,7 +56,7 @@ class SeriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Series $series)
+    public function update(Request $request, Serie $serie)
     {
         //
     }
@@ -75,7 +64,7 @@ class SeriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Series $series)
+    public function destroy(Serie $serie)
     {
         //
     }
