@@ -14,14 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.site');
-});
+Route::get('/', [SeriesController::class, 'index']);
 
 Route::get('/hello-world', function () {
     echo '<h1>Hello World!</h1>';
 });
 
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/create', [SeriesController::class, 'create']);
-Route::post('/series/store', [SeriesController::class, 'store']);
+Route::resource('/series', SeriesController::class);
