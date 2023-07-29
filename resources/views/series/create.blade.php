@@ -1,6 +1,6 @@
 <x-layout title="Inserir nova série">
     <div class="container">
-        <form action="/series/store" method="POST">
+        <form action="{{ route('series.store') }}" method="POST">
             @csrf
             <input type="text" placeholder="Título da série" name="title">
             <input type="text" placeholder="Quantidade de Temporadas" name="seasons">
