@@ -11,7 +11,7 @@
                 @forelse ($series as $serie)
                     <li>
                         {{ $serie->title }}
-                        <a href="{{ route('series.edit', $serie->id) }}">E</a>
+                        <a href="{{ route('series.edit', $serie->id) }}">Ed</a>
                         <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
