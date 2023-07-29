@@ -1,4 +1,4 @@
-<x-layout title="Editar série: {{ $series->title }}">
+<x-layout title="Editar série: '{{ $series->title }}'">
     <div class="container">
         <form action="{{ route('series.update', $series->id) }}" method="PUT">
             @csrf
