@@ -1,27 +1,33 @@
-<x-layout title="Series">
-    <div class="container">
-        <a href="{{ route('series.create') }}">+ Adicionar</a>
+@extends('site.layout')
 
-        @isset($message)
-            <div class="alert alert-success">{{ $message }}</div>
-        @endisset
+@section('content')
 
-        <section class="series">
-            <ul>
-                @forelse ($series as $serie)
-                    <li>
-                        {{ $serie->title }}
-                        <a href="{{ route('series.edit', $serie->id) }}">Ed</a>
-                        <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button>X</button>
-                        </form>
-                    </li><br><br>
-                @empty
-                    <p>Não foi possível encontrar nenhuma série</p>
-                @endforelse
-            </ul>
-        </section>
-    </div>
-</x-layout>
+<header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <h1 class="h1">Series Controller</h1>
+    <a href="{{ route('series.create') }}" class="btn btn-success">+ Adicionar</a>
+
+    @isset($message)
+        <div class="alert alert-success w-100">{{ $message }}</div>
+    @endisset
+</header>
+<section class="series">
+    <ul class="list-group">
+        @forelse ($series as $serie)
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ $serie->title }}
+                <div class="options d-flex justify-content-around">
+                    <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-primary btn-sm">Ed</a>
+                    <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm">X</button>
+                    </form>
+                </div>
+            </li><br><br>
+        @empty
+            <p>Não foi possível encontrar nenhuma série</p>
+        @endforelse
+    </ul>
+</section>
+
+@endsection

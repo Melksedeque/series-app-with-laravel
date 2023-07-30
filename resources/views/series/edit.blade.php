@@ -1,18 +1,51 @@
-<x-layout title="Editar série: '{{ $series->title }}'">
-    <div class="container">
-        <form action="{{ route('series.update', $series->id) }}" method="PUT">
-            @csrf
-            @method('PUT')
-            <input type="text" placeholder="Título da série" name="title" value="{{ $series?->title }}">
-            <input type="text" placeholder="Quantidade de Temporadas" name="seasons" value="{{ $series?->seasons }}">
-            <input type="text" placeholder="Data de Estréia" name="premiere_date" value="{{ $series?->premiere_date }}">
-            <textarea name="synopsis" id="" cols="30" rows="5" placeholder="Sinopse">{{ $series?->synopsis }}</textarea>
-            {{-- <input type="file" name="image" id="" value="{{ $series?->image }}"> --}}
-            <select name="status" id="">
-                <option value="1">Habilitada</option>
-                <option value="0">Desabilitada</option>
-            </select>
-            <button type="submit">Salvar</button>
-        </form>
+@extends('site.layout')
+
+@section('content')
+
+<header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <h1 class="h1">Editar série: <em>{{ $series->title }}</em></h1>
+</header>
+<form action="{{ route('series.update', $series->id) }}" method="PUT">
+    @csrf
+    @method('PUT')
+    <div class="mb-3">
+        <label for="title" class="form-label">Título da Série: <span class="text-danger">*</span></label>
+        <input type="text" class="form-control"
+        name="title"
+        placeholder="Título da série"
+        value="{{ $series?->title }}">
     </div>
-</x-layout>
+    <div class="mb-3">
+        <label for="seasons" class="form-label">Quantas temporadas possui:</label>
+        <input type="text" class="form-control"
+        name="seasons"
+        placeholder="Quantidade de Temporadas"
+        value="{{ $series?->seasons }}">
+    </div>
+    <div class="mb-3">
+        <label for="premiere_date" class="form-label">Data de lançamento:</label>
+        <input type="date" class="form-control"
+        name="premiere_date"
+        placeholder="Data de Estréia"
+        value="{{ $series?->premiere_date }}">
+    </div>
+    <div class="mb-3">
+        <label for="synopsis" class="form-label">Sinopse:</label>
+        <textarea name="synopsis" class="form-control"
+        cols="30" rows="5"
+        placeholder="Sinopse">{{ $series?->synopsis }}</textarea>
+    </div>
+    {{-- <div class="mb-3">
+        <input type="file" name="image" id="" value="{{ $series?->image }}">
+    </div> --}}
+    <div class="mb-3">
+        <label for="status" class="form-label">Status:</label>
+        <select name="status" class="form-select">
+            <option value="1">Habilitada</option>
+            <option value="0">Desabilitada</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+@endsection

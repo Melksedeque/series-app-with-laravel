@@ -1,13 +1,41 @@
-<x-layout title="Inserir nova série">
-    <div class="container">
-        <form action="{{ route('series.store') }}" method="POST">
-            @csrf
-            <input type="text" placeholder="Título da série" name="title">
-            <input type="text" placeholder="Quantidade de Temporadas" name="seasons">
-            <input type="text" placeholder="Data de Estréia" name="premiere_date">
-            <textarea name="synopsis" id="" cols="30" rows="5" placeholder="Sinopse"></textarea>
-            <input type="file" name="image" id="">
-            <button type="submit">Salvar</button>
-        </form>
+@extends('site.layout')
+
+@section('content')
+
+<header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <h1 class="h1">Inserir nova série</h1>
+</header>
+<form action="{{ route('series.create') }}" method="POST">
+    @csrf
+    <div class="mb-3">
+        <label for="title" class="form-label">Título da Série: <span class="text-danger">*</span></label>
+        <input type="text" class="form-control"
+        name="title"
+        placeholder="Título da série">
     </div>
-</x-layout>
+    <div class="mb-3">
+        <label for="seasons" class="form-label">Quantas temporadas possui:</label>
+        <input type="text" class="form-control"
+        name="seasons"
+        placeholder="Quantidade de Temporadas">
+    </div>
+    <div class="mb-3">
+        <label for="premiere_date" class="form-label">Data de lançamento:</label>
+        <input type="date" class="form-control"
+        name="premiere_date"
+        placeholder="Data de Estréia">
+    </div>
+    <div class="mb-3">
+        <label for="synopsis" class="form-label">Sinopse:</label>
+        <textarea name="synopsis" class="form-control"
+        cols="30" rows="5"
+        placeholder="Sinopse"></textarea>
+    </div>
+    <div class="mb-3">
+        <input type="file" class="form-control"
+            name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+@endsection
