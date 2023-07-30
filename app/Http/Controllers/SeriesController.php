@@ -36,7 +36,9 @@ class SeriesController extends Controller
     {
         $serie = Serie::create($request->all());
 
-        return to_route('series.index')->with('success.message', "Série <strong>'{$serie->title}'</strong> adicionada com sucesso!");
+        $text = "Série '$serie->title' adicionada com sucesso!";
+
+        return to_route('series.index')->with('success.message', $text);
     }
 
     /**
