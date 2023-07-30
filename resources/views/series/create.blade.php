@@ -5,7 +5,7 @@
 <header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
     <h1 class="h1">Inserir nova série</h1>
 </header>
-<form action="{{ route('series.create') }}" method="POST">
+<form action="{{ route('series.store') }}" method="POST">
     @csrf
     <div class="mb-3">
         <label for="title" class="form-label">Título da Série: <span class="text-danger">*</span></label>
