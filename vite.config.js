@@ -13,6 +13,7 @@ export default defineConfig({
         alias: {
             '@': '/resources/js',
             '~bootstrap': path.resolve(__dirname,"node_modules/bootstrap/dist"),
+            '~fontawesome': path.resolve(__dirname,"node_modules/font-awesome/css"),
         },
     },
 });
