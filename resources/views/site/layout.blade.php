@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <header class="d-flex justify-content-center align-items-center p-2">
+        <div class="logo">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="">
+        </div>
+    </header>
+
     <div class="container">
         @yield('content')
     </div>
