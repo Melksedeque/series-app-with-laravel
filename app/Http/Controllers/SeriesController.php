@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,12 +33,8 @@ class SeriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SeriesFormRequest $request)
     {
-        $request->validate([
-            'nome' => ['required', 'min:3'],
-        ]);
-        
         $serie = Serie::create($request->all());
 
         $text = "Série '$serie->title' adicionada com sucesso!";
@@ -64,7 +61,7 @@ class SeriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Serie $series)
+    public function update(SeriesFormRequest $request, Serie $series)
     {
         $series->fill($request->all());
         // dd($series);
