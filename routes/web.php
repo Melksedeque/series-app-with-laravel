@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SeriesController::class, 'index']);
-
-Route::get('/hello-world', function () {
-    echo '<h1>Hello World!</h1>';
-});
+Route::get('/', [SeriesController::class, 'index'])->name("index");
 
 Route::resource('/series', SeriesController::class);
