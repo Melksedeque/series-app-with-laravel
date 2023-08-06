@@ -15,7 +15,7 @@
 <body>
     <header class="site-header d-flex justify-content-center align-items-center">
         <div class="logo">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="">
+            <a href="{{ route("index") }}"><img src="{{ asset('assets/images/logo.png') }}" alt=""></a>
         </div>
     </header>
 
