@@ -1,0 +1,9 @@
+header.site-header {
+    background: $branco;
+    box-shadow: 0 0 5px rgba($cinza, .5);
+    .logo {
+        img {
+            height: 100px;
+        }
+    }
+}
