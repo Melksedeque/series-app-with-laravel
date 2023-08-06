@@ -13,27 +13,27 @@
         <input type="text" class="form-control"
         name="title"
         placeholder="Título da série"
-        value="{{ $series?->title }}">
+        value="{{ old('title', $series->title) }}">
     </div>
     <div class="mb-3">
         <label for="seasons" class="form-label">Quantas temporadas possui:</label>
         <input type="text" class="form-control"
         name="seasons"
         placeholder="Quantidade de Temporadas"
-        value="{{ $series?->seasons }}">
+        value="{{ old('seasons', $series->seasons) }}">
     </div>
     <div class="mb-3">
         <label for="premiere_date" class="form-label">Data de lançamento:</label>
         <input type="date" class="form-control"
         name="premiere_date"
         placeholder="Data de Estréia"
-        value="{{ $series?->premiere_date }}">
+        value="{{ old('premiere_date', $series->premiere_date) }}">
     </div>
     <div class="mb-3">
         <label for="synopsis" class="form-label">Sinopse:</label>
         <textarea name="synopsis" class="form-control"
         cols="30" rows="5"
-        placeholder="Sinopse">{{ $series?->synopsis }}</textarea>
+        placeholder="Sinopse">{{ old('synopsis', $series->synopsis) }}</textarea>
     </div>
     {{-- <div class="mb-3">
         <input type="file" name="image" id="" value="{{ $series?->image }}">
