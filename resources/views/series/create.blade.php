@@ -4,16 +4,6 @@
 
 <header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
     <h1 class="h1">Inserir nova série</h1>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 </header>
 
 <form action="{{ route('series.store') }}" method="POST">
