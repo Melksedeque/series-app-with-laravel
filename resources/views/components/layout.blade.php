@@ -10,7 +10,7 @@
     @vite(['resources/scss/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <x-header title="Controlador de Séries"></x-header>
+    @include('components.header')
 
     <div class="container">
         <h1>{{ $title }}</h1>
