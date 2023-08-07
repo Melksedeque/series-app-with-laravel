@@ -1,3 +1,3 @@
 <div class="logo">
-    <img src="" alt="">
+    <img src="" alt="{{ $title }}">
 </div>
