@@ -3,7 +3,8 @@
 
     <ul class="list-group">
         @foreach ($series as $serie)
-        <li class="list-group-item">{{ $serie->nome }} <a class="btn btn-primary" href="{{ route('series.edit') }}">Editar</a></li>
+        {{-- {{dd($serie)}} --}}
+        <li class="list-group-item">{{ $serie->title }} <a class="btn btn-primary" href="{{ route('series.edit', $serie->id) }}">Editar</a></li>
         @endforeach
     </ul>
 </x-layout>
