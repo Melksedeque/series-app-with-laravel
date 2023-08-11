@@ -8,7 +8,7 @@ ul.list-group {
         display: flex;
         justify-content: space-between;
         &:hover {
-            background-color: darken($branco, 5%);
+            background-color: darken($branco, 2.5%);
         }
     }
 }
