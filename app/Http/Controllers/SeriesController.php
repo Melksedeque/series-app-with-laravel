@@ -47,7 +47,7 @@ class SeriesController extends Controller
      */
     public function show(Serie $series)
     {
-        //
+        return view('series.show')->with('serie', $series);
     }
 
     /**
