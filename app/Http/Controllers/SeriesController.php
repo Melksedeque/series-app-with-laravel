@@ -35,11 +35,14 @@ class SeriesController extends Controller
      */
     public function store(SeriesFormRequest $request)
     {
+        $request->validate([
+            'title' => ['required', 'min:2']
+        ]);
         $serie = Serie::create($request->all());
 
         $text = "Série '$serie->title' adicionada com sucesso!";
 
-        return to_route('series.index')->with('success.message', $text);
+        return redirect()->route('series.index')->with('success.message', $text);
     }
 
     /**
@@ -67,7 +70,7 @@ class SeriesController extends Controller
         // dd($series);
         $series->save();
 
-        return to_route('series.index')->with('success.message', "Série '{$series->title} atualizada com sucesso!'");
+        return redirect()->route('series.index')->with('success.message', "Série '{$series->title} atualizada com sucesso!'");
     }
 
     /**
@@ -75,8 +78,9 @@ class SeriesController extends Controller
      */
     public function destroy(Serie $serie)
     {
-        $serie->delete();
+        // $serie->delete();
+        Serie::destroy($serie->id);
 
-        return to_route('series.index')->with('success.message', "Série '{$serie->title}' removida com sucesso!");
+        return redirect()->route('series.index')->with('success.message', "Série '{$serie->title}' removida com sucesso!");
     }
 }
