@@ -73,10 +73,10 @@ class SeriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Serie $series)
+    public function destroy(Serie $serie)
     {
-        $series->delete();
+        $serie->delete();
 
-        return to_route('series.index')->with('success.message', "Série '{$series->title}' removida com sucesso!");
+        return to_route('series.index')->with('success.message', "Série '{$serie->title}' removida com sucesso!");
     }
 }
