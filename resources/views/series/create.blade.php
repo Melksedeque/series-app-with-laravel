@@ -3,5 +3,49 @@
         <h1 class="h1">Inserir nova série</h1>
     </header>
 
-    <x-series.forms-create :action="route('series.store')" />
+    <form action="{{ route('series.store') }}" method="POST">
+        @csrf
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <div class="mb-3">
+            <label for="title" class="form-label">Título da Série: <span class="text-danger">*</span></label>
+            <input type="text" class="form-control"
+            name="title"
+            value="{{ old('title') }}"
+            placeholder="Título da série">
+        </div>
+        <div class="mb-3">
+            <label for="seasons" class="form-label">Quantas temporadas possui:</label>
+            <input type="text" class="form-control"
+            name="seasons"
+            value="{{ old('seasons') }}"
+            placeholder="Quantidade de Temporadas">
+        </div>
+        <div class="mb-3">
+            <label for="premiere_date" class="form-label">Data de lançamento:</label>
+            <input type="date" class="form-control"
+            name="premiere_date"
+            value="{{ old('premiere_date') }}"
+            placeholder="Data de Estréia">
+        </div>
+        <div class="mb-3">
+            <label for="synopsis" class="form-label">Sinopse:</label>
+            <textarea name="synopsis" class="form-control"
+            cols="30" rows="5"
+            placeholder="Sinopse">{{ old('synopsis') }}</textarea>
+        </div>
+        <div class="mb-3">
+            <input type="file" class="form-control"
+                name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
 </x-layout>
