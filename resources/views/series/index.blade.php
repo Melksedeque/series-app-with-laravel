@@ -1,5 +1,8 @@
 <x-layout title="Séries">
-    <a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
+    <div class="page-header d-flex justify-content-between align-items-center mb-3">
+        <h1>Séries</h1>
+        <a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
+    </div>
 
     <ul class="list-group">
         @foreach ($series as $serie)
