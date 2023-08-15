@@ -13,10 +13,6 @@
     @include('components.header')
 
     <div class="container">
-        <div class="page-header d-flex justify-content-between align-items-center mb-3">
-            <h1>{{ $title }}</h1>
-        </div>
-
         {{ $slot }}
     </div>
 
