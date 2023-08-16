@@ -25,4 +25,12 @@ class SeriesFormRequest extends FormRequest
             'title' => ['required', 'min:3'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'O campo de título é obrigatório!',
+            'title.min' => 'O campo de título precisa de pelo menos :min caracteres',
+        ];
+    }
 }
