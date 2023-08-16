@@ -16,7 +16,7 @@ class SeriesController extends Controller
      */
     public function index(Request $request)
     {
-        $series = Serie::all()->sortBy('title');
+        $series = Serie::all()->where('status', 1)->sortBy('title');
         $message = session('success.message');
 
         return view('series.index', compact('series'))->with('message', $message);
@@ -35,9 +35,6 @@ class SeriesController extends Controller
      */
     public function store(SeriesFormRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'min:2']
-        ]);
         $serie = Serie::create($request->all());
 
         $text = "Série '$serie->title' adicionada com sucesso!";
