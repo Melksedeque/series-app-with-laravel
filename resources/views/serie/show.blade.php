@@ -3,10 +3,11 @@
 
 <div class="content-serie d-flex justify-content-between align-items-start">
     <div class="left">
+        {{-- {{ dd($serie->image); }} --}}
         @if ($serie->image)
-            <img src="{{ $serie->image }}" alt="{{ $serie->title }}" class="img-fluid">
+            <img src="{{ url("storage/{$serie->image}") }}" alt="{{ $serie->title }}" class="img-fluid">
         @else
-            <img src="{{ asset('images/series/noimage.jpg') }}" alt="{{ $serie->title }} sem imagem defida" class="img-fluid">
+            <img src="{{ url("storage/series/noimage.jpg") }}" alt="{{ $serie->title }} sem imagem defida" class="img-fluid">
         @endif
     </div>
 
