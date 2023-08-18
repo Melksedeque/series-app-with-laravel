@@ -16,7 +16,8 @@ class SeriesController extends Controller
      */
     public function index(Request $request)
     {
-        $series = Serie::all()->where('status', 1)->sortBy('title');
+        // $series = Serie::all()->where('status', 1)->sortBy('title');
+        $series = Serie::all()->sortBy('title');
         $message = session('success.message');
 
         return view('series.index', compact('series'))->with('message', $message);
@@ -64,11 +65,11 @@ class SeriesController extends Controller
     public function update(SeriesFormRequest $request, Serie $series)
     {
         $series->fill($request->all());
-        // dd($series);
         $series->save();
 
-        return redirect()->route('series.index')->with('success.message', "Série '{$series->title} atualizada com sucesso!'");
+        return redirect()->route('series.index')->with('success.message', "Série '{$series->title}' atualizada com sucesso!'");
     }
+
 
     /**
      * Remove the specified resource from storage.
