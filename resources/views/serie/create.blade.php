@@ -3,7 +3,7 @@
         <h1 class="h1">Inserir nova série</h1>
     </header>
 
-    <form action="{{ route('serie.store') }}" method="POST">
+    <form action="{{ route('serie.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Título da Série: <span class="text-danger">*</span></label>
