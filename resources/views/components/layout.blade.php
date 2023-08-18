@@ -29,7 +29,6 @@
             </div>
         @endif
 
-
         <div class="container">
             {{ $slot }}
         </div>
