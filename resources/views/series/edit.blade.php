@@ -3,8 +3,9 @@
         <h1 class="h1">Editar série <em>"{{ $series->title }}"</em></h1>
     </header>
 
-    <form action="{{ route('series.store') }}" method="POST">
+    <form action="{{ route('series.update', ['series' => $series->id]) }}" method="POST">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="title" class="form-label">Título da Série: <span class="text-danger">*</span></label>
             <input type="text" class="form-control"
