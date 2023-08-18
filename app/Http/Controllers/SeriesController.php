@@ -76,9 +76,7 @@ class SeriesController extends Controller
      */
     public function destroy(Serie $serie)
     {
-        dd($serie);
         $serie->delete();
-        Serie::destroy($serie->id);
 
         return redirect()->route('serie.index')->with('success.message', "Série '{$serie->title}' removida com sucesso!");
     }
