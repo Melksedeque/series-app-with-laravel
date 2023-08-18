@@ -22,6 +22,13 @@
         </div>
     @endif
 
+    @if(session('success.message'))
+        <div class="alert alert-success">
+            <i class="bi bi-check-circle-fill"></i> {{ session('success.message') }}
+        </div>
+    @endif
+
+
     <div class="container">
         {{ $slot }}
     </div>
