@@ -10,29 +10,31 @@
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    @include('components.header')
+    <main class="main-site d-flex flex-column justify-content-between">
+        @include('components.header')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li><i class="bi bi-x-octagon-fill"></i> {{ $error }}</li>
-                @endforeach
-            </ul>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li><i class="bi bi-x-octagon-fill"></i> {{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if(session('success.message'))
+            <div class="alert alert-success">
+                <i class="bi bi-check-circle-fill"></i> {{ session('success.message') }}
+            </div>
+        @endif
+
+
+        <div class="container">
+            {{ $slot }}
         </div>
-    @endif
 
-    @if(session('success.message'))
-        <div class="alert alert-success">
-            <i class="bi bi-check-circle-fill"></i> {{ session('success.message') }}
-        </div>
-    @endif
-
-
-    <div class="container">
-        {{ $slot }}
-    </div>
-
-    @include('components.footer')
+        @include('components.footer')
+    </main>
 </body>
 </html>
