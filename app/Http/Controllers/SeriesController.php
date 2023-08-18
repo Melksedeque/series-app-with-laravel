@@ -6,6 +6,7 @@ use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -36,9 +37,13 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $serie = Serie::create($request->all());
+        // dd($serie["image"]);
+        if ($request->hasFile('image') && $request->image->isValid()) {
+            $path = $request->image->store('series', 'public');
+            $serie["image"] = Storage::url($path);
+        }
 
         $text = "Série '$serie->title' adicionada com sucesso!";
-
         return redirect()->route('serie.index')->with('success.message', $text);
     }
 
