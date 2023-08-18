@@ -10,7 +10,8 @@
             <input type="text" class="form-control"
             name="title"
             value="{{ old('title') }}"
-            placeholder="Título da série">
+            placeholder="Título da série"
+            autofocus>
         </div>
         <div class="mb-3">
             <label for="seasons" class="form-label">Quantas temporadas possui:</label>
