@@ -20,7 +20,7 @@ class SeriesController extends Controller
         $series = Serie::all()->sortBy('title');
         $message = session('success.message');
 
-        return view('series.index', compact('series'))->with('message', $message);
+        return view('serie.index', compact('series'))->with('message', $message);
     }
 
     /**
@@ -28,7 +28,7 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        return view('series.create');
+        return view('serie.create');
     }
 
     /**
@@ -40,34 +40,34 @@ class SeriesController extends Controller
 
         $text = "Série '$serie->title' adicionada com sucesso!";
 
-        return redirect()->route('series.index')->with('success.message', $text);
+        return redirect()->route('serie.index')->with('success.message', $text);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Serie $series)
+    public function show(Serie $serie)
     {
-        return view('series.show')->with('serie', $series);
+        return view('serie.show')->with('serie', $serie);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Serie $series)
+    public function edit(Serie $serie)
     {
-        return view('series.edit')->with('series', $series);
+        return view('serie.edit')->with('serie', $serie);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SeriesFormRequest $request, Serie $series)
+    public function update(SeriesFormRequest $request, Serie $serie)
     {
-        $series->fill($request->all());
-        $series->save();
+        $serie->fill($request->all());
+        $serie->save();
 
-        return redirect()->route('series.index')->with('success.message', "Série '{$series->title}' atualizada com sucesso!'");
+        return redirect()->route('serie.index')->with('success.message', "Série '{$serie->title}' atualizada com sucesso!'");
     }
 
 
@@ -76,9 +76,10 @@ class SeriesController extends Controller
      */
     public function destroy(Serie $serie)
     {
-        // $serie->delete();
+        dd($serie);
+        $serie->delete();
         Serie::destroy($serie->id);
 
-        return redirect()->route('series.index')->with('success.message', "Série '{$serie->title}' removida com sucesso!");
+        return redirect()->route('serie.index')->with('success.message', "Série '{$serie->title}' removida com sucesso!");
     }
 }
