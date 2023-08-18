@@ -2,6 +2,10 @@ body {
     font-family: $fonte;
 }
 
+main.main-site {
+    min-height: 100vh;
+}
+
 .alert {
     border-radius: 0;
     ul {
