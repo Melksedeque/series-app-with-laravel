@@ -36,13 +36,14 @@ class SeriesController extends Controller
      */
     public function store(SeriesFormRequest $request)
     {
-        $serie = Serie::create($request->all());
+        $data = $request->all();
         // dd($serie["image"]);
         if ($request->hasFile('image') && $request->image->isValid()) {
-            $path = $request->image->store('series', 'public');
-            $serie["image"] = Storage::url($path);
+            $data["image"] = $request->image->store('series', 'public');
         }
 
+        $serie = Serie::create($data);
+        // dd($serie);
         $text = "Série '$serie->title' adicionada com sucesso!";
         return redirect()->route('serie.index')->with('success.message', $text);
     }
