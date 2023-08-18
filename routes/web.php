@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SeriesController::class, 'index'])->name("index");
 
-Route::resource('/series', SeriesController::class);
+Route::resource('series', SeriesController::class);
