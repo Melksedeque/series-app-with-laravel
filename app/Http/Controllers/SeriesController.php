@@ -16,8 +16,7 @@ class SeriesController extends Controller
      */
     public function index(Request $request)
     {
-        // $series = Serie::all()->where('status', 1)->sortBy('title');
-        $series = Serie::all()->sortBy('title');
+        $series = Serie::all()->where('status', 1)->sortBy('title');
         $message = session('success.message');
 
         return view('serie.index', compact('series'))->with('message', $message);
