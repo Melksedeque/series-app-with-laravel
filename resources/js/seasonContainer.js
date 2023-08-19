@@ -11,14 +11,14 @@ addSeasonButton.addEventListener('click', () => {
                 <label class="me-1 mb-0">Temporada:</label>
                 <input type="number"
                     id="season-${seasonNumber}"
-                    name="seasons[${seasonNumber - 1}][number]"
+                    name="seasons[${seasonNumber - 1}][season]"
                     value="${seasonNumber}" disabled>
             </div>
             <div class="d-flex flex-row align-items-center justift-content-start">
                 <label for="season-${seasonNumber}">Episódios:</label>
                 <input type="number"
                     id="season-${seasonNumber}"
-                    name="seasons[${seasonNumber - 1}][episodes_count]"
+                    name="seasons[${seasonNumber - 1}][episodes]"
                     class="season-episodes-input form-control ms-2"
                     maxlength="3" required>
             </div>
