@@ -6,27 +6,31 @@ let seasonNumber = document.querySelectorAll('.season-number').length + 1;
 addSeasonButton.addEventListener('click', () => {
     const seasonDiv = document.createElement('div');
     seasonDiv.innerHTML = `
-        <div class="d-flex flex-row flex-wrap w-100 mb-3">
-            <div class="d-flex flex-row g-3 align-items-center w-100">
-                <label for="season-${seasonNumber}" class="col-6">Número da Temporada:</label>
-                <div class="col-6">
-                    <input type="number"
-                        id="season-${seasonNumber}"
-                        name="seasons[${seasonNumber - 1}][number]"
-                        class="form-control" required>
-                </div>
-                <label for="season-${seasonNumber}" class="col-6">Quantidade de Episódios:</label>
-                <div class="col-6">
-                    <input type="number"
-                        id="season-${seasonNumber}"
-                        name="seasons[${seasonNumber - 1}][episodes_count]"
-                        class="form-control" required>
-                </div>
+        <div class="d-flex align-items-center w-100">
+            <div class="d-flex flex-row align-items-center justift-content-start">
+                <label class="me-1 mb-0">Temporada:</label>
+                <input type="number"
+                    id="season-${seasonNumber}"
+                    name="seasons[${seasonNumber - 1}][number]"
+                    value="${seasonNumber}" disabled>
+            </div>
+            <div class="d-flex flex-row align-items-center justift-content-start">
+                <label for="season-${seasonNumber}">Episódios:</label>
+                <input type="number"
+                    id="season-${seasonNumber}"
+                    name="seasons[${seasonNumber - 1}][episodes_count]"
+                    class="season-episodes-input form-control ms-2"
+                    maxlength="3" required>
             </div>
         </div>
     `;
-    seasonDiv.classList.add('season-number', 'my-1');
+    seasonDiv.classList.add('season-number', 'my-3', 'col-6', 'px-2');
     seasonsContainer.appendChild(seasonDiv);
+
+    const newSeasonInput = seasonDiv.querySelector('.season-episodes-input');
+    if (newSeasonInput) {
+        newSeasonInput.focus();
+    }
 
     seasonNumber++;
 });
