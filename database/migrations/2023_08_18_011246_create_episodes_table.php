@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('season_id')->constrained()->onDelete('cascade');
             $table->integer('number');
-            $table->string('title');
             $table->timestamps();
         });
     }
