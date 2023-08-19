@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <main class="main-site d-flex flex-column justify-content-between">
+    <main class="main-site ">
         @include('components.header')
 
         @if ($errors->any())
