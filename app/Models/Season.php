@@ -11,7 +11,7 @@ class Season extends Model
 
     public function series()
     {
-        return $this->belongsTo(Serie::class);
+        return $this->belongsTo(Serie::class, 'serie_id');
     }
 
     public function episodes()
