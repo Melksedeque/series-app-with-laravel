@@ -6,4 +6,23 @@ form {
     .left, .right {
         width: 48%;
     }
+    input {
+        &[type=number], &[name*="seasons"] {
+            appearance: textfield;
+            border: 0 none;
+            border-radius: 0;
+            border-bottom: 1px solid;
+            -moz-appearance: textfield;
+            padding: 0;
+            width: 40px;
+            &:focus {
+                box-shadow: none;
+                outline: 0;
+            }
+        }
+        &[disabled] {
+            border: 0 none;
+            font-weight: 700;
+        }
+    }
 }
