@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('quantity');
             $table->foreignId('season_id')->constrained()->onDelete('cascade');
+            $table->integer('number');
+            $table->string('title');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
