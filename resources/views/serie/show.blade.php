@@ -1,7 +1,7 @@
 <x-layout title="Séries">
 </div>
 
-<div class="content-serie d-flex justify-content-between align-items-start">
+<div class="container content-serie d-flex justify-content-between align-items-start">
     <div class="left">
         {{-- {{ dd($serie->image); }} --}}
         @if ($serie->image)
