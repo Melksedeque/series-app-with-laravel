@@ -4,8 +4,10 @@ header.site-header {
     margin-bottom: 50px;
     padding: 20px;
     .logo {
+        text-align: center;
         img {
             height: 100px;
+            max-width: 100%;
         }
     }
 }
