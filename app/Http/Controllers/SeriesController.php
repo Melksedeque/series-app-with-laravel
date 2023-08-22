@@ -6,6 +6,7 @@ use App\Http\Requests\SeriesFormRequest;
 use App\Models\Episode;
 use App\Models\Season;
 use App\Models\Serie;
+use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -36,34 +37,9 @@ class SeriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SeriesFormRequest $request)
+    public function store(SeriesFormRequest $request, SeriesRepository $repository)
     {
-        $serie = DB::transaction(function () use ($request) {
-            $serieData = $request->except('seasons');
-            $serie = Serie::create($serieData);
-
-            if ($request->has('seasons') && is_array($request->input('seasons'))) {
-                foreach ($request->input('seasons') as $season => $episodes) {
-                    $season = new Season([
-                        'number' => $season + 1,
-                    ]);
-
-                    $serie->seasons()->save($season);
-
-                    if (isset($episodes) && is_array($episodes)) {
-                        foreach ($episodes as $episode) {
-                            $episode = new Episode([
-                                'number' => $episode,
-                            ]);
-
-                            $season->episodes()->save($episode);
-                        }
-                    }
-                }
-            }
-
-            return $serie;
-        });
+        $serie = $repository->add($request);
 
         $text = "Série '$serie->title' adicionada com sucesso!";
         return redirect()->route('serie.index')->with('success.message', $text);
