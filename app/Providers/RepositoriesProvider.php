@@ -12,6 +12,9 @@ class RepositoriesProvider extends ServiceProvider
         SeriesRepository::class => EloquentSeriesRepository::class,
     ];
 
+    /**
+     * Register services.
+     */
     public function register(): void
     {
         //
