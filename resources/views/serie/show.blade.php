@@ -15,7 +15,7 @@
         <h2>Informações da série</h2>
         <ul>
             <li><strong>Título: </strong>{{ $serie->title }}</li>
-            <li><strong>Temporadas: </strong>{{ $serie->seasons }}</li>
+            <li><strong>Temporadas: </strong>{{ $serie->seasons->count() }}</li>
             <li><strong>Data da estréia: </strong>{{ $serie->premiere_date }}</li>
             <li><strong>Sinopse:<br></strong>{{ $serie->synopsis }}</li>
         </ul>
