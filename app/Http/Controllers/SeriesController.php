@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
-use App\Models\Episode;
-use App\Models\Season;
 use App\Models\Serie;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-
-use function PHPUnit\Framework\returnSelf;
 
 class SeriesController extends Controller
 {
+    public function __construct(private SeriesRepository $repository)
+    {
+
+    }
     /**
      * Display a listing of the resource.
      */
@@ -37,9 +35,9 @@ class SeriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SeriesFormRequest $request, SeriesRepository $repository)
+    public function store(SeriesFormRequest $request)
     {
-        $serie = $repository->add($request);
+        $serie = $this->repository->add($request);
 
         $text = "Série '$serie->title' adicionada com sucesso!";
         return redirect()->route('serie.index')->with('success.message', $text);
