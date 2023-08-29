@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 class SeriesController extends Controller
 {
     public function __construct(private SeriesRepository $repository)
-    {
-
-    }
+    {}
     /**
      * Display a listing of the resource.
      */
