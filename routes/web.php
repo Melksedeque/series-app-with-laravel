@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SeriesController;
+use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SeriesController::class, 'index'])->name("index");
+Route::get('/', [SeriesController::class, 'index'])->name("index")->middleware(Autenticador::class);
 
 Route::resource('serie', SeriesController::class);
