@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SeriesController::class, 'index'])->name("index");
+Route::get('/', [SeriesController::class, 'index'])->name("index")->middleware(Autenticador::class);
 
 Route::resource('serie', SeriesController::class);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('signin');
+
+Route::get('/register', [UserController::class, 'create'])->name('user.create');
+Route::post('/register', [UserController::class, 'store'])->name('user.store');
